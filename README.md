@@ -1,4 +1,4 @@
-# Globetrek Tours
+# Veda Aura
 
 Premium travel and tour website scaffold built with Next.js 14, TypeScript, Tailwind CSS, and Framer Motion.
 

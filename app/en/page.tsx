@@ -20,7 +20,7 @@ export default function EnglishHomePage() {
   return (
     <PageShell chatbot locale="en">
       <HeroSection
-        title="Globetrek Excursions"
+        title="Veda Aura"
         sideNote="The most trusted premium travel agency for private tours, transfers, and seamless discovery across Greece."
         image="https://images.pexels.com/photos/29459095/pexels-photo-29459095.jpeg?auto=compress&cs=tinysrgb&w=1600"
         imageAlt="Rock formations and lush cliffs in Greece"
@@ -32,7 +32,7 @@ export default function EnglishHomePage() {
         <p className="section-kicker justify-center">With harmony</p>
         <h2 className="mx-auto mt-5 max-w-4xl text-4xl font-medium tracking-[-0.06em] sm:text-5xl lg:text-[3.9rem]">
           From the ancient wonders to the stunning landscapes of Greece, enjoy every step of your
-          journey with Globetrek Tours.
+          journey with Veda Aura.
         </h2>
         <div className="mt-8 inline-flex items-center gap-4 text-sm text-[var(--muted)]">
           <span>3500+ people trust us</span>
@@ -127,7 +127,7 @@ export default function EnglishHomePage() {
             The highest level of comfort, convenience, and service
           </h2>
           <p className="max-w-xl text-sm leading-7 text-[var(--muted)]">
-            At Globetrek Tours, we combine premium service with attention to detail. Whether it is
+            At Veda Aura, we combine premium service with attention to detail. Whether it is
             a private journey tailored just for you, a shared group experience, or a seamless
             transfer, we handle every moving part so your trip feels effortless.
           </p>

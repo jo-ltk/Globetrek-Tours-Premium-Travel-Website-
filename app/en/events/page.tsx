@@ -18,7 +18,7 @@ export default function EnglishEventsPage() {
       <section className="grid gap-10 pb-14 lg:grid-cols-[1.2fr_0.8fr]">
         <Reveal>
           <h2 className="max-w-3xl text-4xl font-medium tracking-[-0.06em] sm:text-5xl">
-            Globetrek Tours was created with a clear purpose: to make every journey comfortable,
+            Veda Aura was created with a clear purpose: to make every journey comfortable,
             seamless, and memorable.
           </h2>
         </Reveal>
@@ -62,7 +62,7 @@ export default function EnglishEventsPage() {
         <Reveal className="space-y-4">
           <p className="text-sm underline underline-offset-4">Accessibility</p>
           <p className="text-3xl font-medium tracking-[-0.06em]">
-            At Globetrek, inclusivity is at the heart of what we do.
+            At Veda Aura, inclusivity is at the heart of what we do.
           </p>
           <p className="text-sm leading-7 text-[var(--muted)]">
             We believe travel should be effortless and enjoyable for everyone. That is why we offer

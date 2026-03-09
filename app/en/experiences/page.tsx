@@ -11,7 +11,7 @@ export default function EnglishExperiencesPage() {
     <PageShell locale="en">
       <HeroSection
         title="Transfer Services"
-        sideNote="At Globetrek Tours, we combine premium service with attention to detail on every airport, port, and city transfer."
+        sideNote="At Veda Aura, we combine premium service with attention to detail on every airport, port, and city transfer."
         image="https://images.pexels.com/photos/13512045/pexels-photo-13512045.jpeg?auto=compress&cs=tinysrgb&w=1600"
         imageAlt="Luxury transfer vehicle on a road"
         compact

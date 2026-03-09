@@ -7,7 +7,7 @@ const contactCards = [
     icon: Mail,
     title: "Write us",
     body: "Reach out to us by email",
-    foot: "info@globetrek-tours.com",
+    foot: "info@veda-aura.com",
   },
   {
     icon: PenSquare,

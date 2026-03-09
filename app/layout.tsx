@@ -14,7 +14,7 @@ const serif = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Globetrek Tours",
+  title: "Veda Aura",
   description:
     "Premium travel website UI for curated tours, transfers, and concierge travel planning.",
 };

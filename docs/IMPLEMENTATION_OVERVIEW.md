@@ -2,7 +2,7 @@
 
 ## Project Summary
 
-This project now contains a premium travel website frontend for Globetrek Tours. The implementation focuses on matching the provided visual references closely in tone and structure: large editorial headings, warm neutral backgrounds, olive accent colors, rounded premium cards, clean spacing, and subtle modern motion.
+This project now contains a premium travel website frontend for Veda Aura. The implementation focuses on matching the provided visual references closely in tone and structure: large editorial headings, warm neutral backgrounds, olive accent colors, rounded premium cards, clean spacing, and subtle modern motion.
 
 The work completed in this phase is frontend-focused. It includes the visual system, page structure, reusable UI components, route setup, and placeholder data. It does not yet include real booking logic, database integration, admin functionality, or AI chatbot backend behavior.
 

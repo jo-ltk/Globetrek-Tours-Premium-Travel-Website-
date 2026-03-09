@@ -30,7 +30,7 @@ export default function EnglishContactPage() {
 
       <section className="grid gap-6 pb-12 lg:grid-cols-3">
         {[
-          ["Write us", "Reach out to us by email", "info@globetrek-tours.com"],
+          ["Write us", "Reach out to us by email", "info@veda-aura.com"],
           ["Call us", "Mon-Fri from 8am to 5pm", "+30 694 455 3616"],
           ["Office", "Private transfers and departures", "Athens, Greece"],
         ].map(([title, body, foot]) => (

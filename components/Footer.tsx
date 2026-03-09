@@ -10,8 +10,8 @@ export default function Footer({
   const about = locale === "de" ? "Uber uns" : "About us";
   const rights =
     locale === "de"
-      ? "2026 Globetrek Tours. Alle Rechte vorbehalten."
-      : "2026 Globetrek Tours. All rights reserved.";
+      ? "2026 Veda Aura. Alle Rechte vorbehalten."
+      : "2026 Veda Aura. All rights reserved.";
 
   return (
     <footer className="px-5 pb-5 sm:px-8 lg:px-12 lg:pb-8">
@@ -24,7 +24,7 @@ export default function Footer({
               </div>
               <div>
                 <p className="text-xs uppercase tracking-[0.28em] text-white/60">Tour Agency</p>
-                <p className="text-lg font-semibold">Globetrek Tours</p>
+                <p className="text-lg font-semibold">Veda Aura</p>
               </div>
             </div>
             <p className="max-w-sm text-sm text-white/70">
@@ -60,7 +60,7 @@ export default function Footer({
             <div className="space-y-3 text-sm text-white/82">
               <p>Athens, Greece</p>
               <p>+30 694 455 3616</p>
-              <p>info@globetrek-tours.com</p>
+              <p>info@veda-aura.com</p>
             </div>
           </div>
         </div>

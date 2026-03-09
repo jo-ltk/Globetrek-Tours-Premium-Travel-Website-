@@ -31,7 +31,7 @@ export default function GallerySection() {
         <div>
           <p className="section-kicker">Our advantages</p>
           <h2 className="mt-4 max-w-xl text-4xl font-medium tracking-[-0.06em] sm:text-5xl">
-            The benefits of traveling with Globetrek
+            The benefits of traveling with Veda Aura
           </h2>
         </div>
         <p className="max-w-md text-sm leading-7 text-[var(--muted)]">
