@@ -28,7 +28,7 @@ export default function EnglishHomePage() {
         ctaLabel="Explore destinations"
       />
 
-      <Reveal className="rounded-[1.9rem] bg-[var(--surface-strong)] px-6 py-14 text-center sm:px-10">
+      <Reveal className="px-6 py-20 text-center sm:px-10 border-y border-[var(--line)]">
         <p className="section-kicker justify-center">With harmony</p>
         <h2 className="mx-auto mt-5 max-w-4xl text-4xl font-medium tracking-[-0.06em] sm:text-5xl lg:text-[3.9rem]">
           From the ancient wonders to the stunning landscapes of Greece, enjoy every step of your
