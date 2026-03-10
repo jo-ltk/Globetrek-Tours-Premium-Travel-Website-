@@ -239,22 +239,59 @@ export const vehicles = [
 
 export const testimonials = [
   {
-    name: "Alice",
-    route: "Athens Tour",
+    name: "Elena Morris",
+    role: "Luxury Travel Advisor",
+    company: "Northbridge Travel",
+    route: "Athens & Cape Sounion",
+    image:
+      "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=900",
+    rating: 5,
     quote:
-      "We loved our trip. Hiring Mercedes was a blessing because of the day of intense walking and road logistics. Our guide felt discreet, premium, and deeply informed.",
+      "From the first pickup to the final coastal stop, everything felt beautifully paced. The vehicle, the driver, and the route all carried that quiet premium feeling we hoped for.",
   },
   {
-    name: "Kerry",
-    route: "Accessible Tour Athens",
+    name: "Marcus Hale",
+    role: "Founder",
+    company: "Cinder House Studio",
+    route: "Accessible Athens Tour",
+    image:
+      "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=900",
+    rating: 5,
     quote:
-      "My tour guide, Marios, was fantastic. He was very kind, thoughtful, and attentive to what I needed. It was the easiest and most beautiful way to experience Athens.",
+      "Traveling with mobility needs usually means compromise, but Veda Aura handled every stop with care. It was the easiest, calmest, and most comfortable way we have ever seen Athens.",
   },
   {
-    name: "Suzy Russell",
-    route: "Olympia Full Day",
+    name: "Thomas Galla",
+    role: "Founder",
+    company: "Zenetch Wellness",
+    route: "Meteora Private Day Tour",
+    image:
+      "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=900",
+    rating: 4.9,
     quote:
-      "Alex was very personable and great guide. He kept the itinerary engaging while everything from timing to comfort felt carefully managed for us.",
+      "In the fast-paced world of travel planning, it is rare to find a team that keeps things this smooth. Veda Aura exceeded our expectations with elegant coordination, warm service, and impeccable timing.",
+  },
+  {
+    name: "Cassandra Mo",
+    role: "Entrepreneur",
+    company: "Atelier Casandra",
+    route: "Delphi & Arachova",
+    image:
+      "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=900",
+    rating: 5,
+    quote:
+      "The whole day felt tailored to us. There was room to slow down, take photos, and enjoy each destination without once feeling rushed between stops.",
+  },
+  {
+    name: "Job Gadhzi",
+    role: "CEO",
+    company: "Glow Co",
+    route: "Nafplion Full-Day Escape",
+    image:
+      "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=900",
+    rating: 4.8,
+    quote:
+      "The route, communication, and overall polish were excellent. It felt more like having a private concierge on the road than booking a standard sightseeing trip.",
   },
 ];
 

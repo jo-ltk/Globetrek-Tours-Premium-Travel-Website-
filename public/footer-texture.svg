@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="140" y1="130" x2="1450" y2="760" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#03120A" />
+      <stop offset="0.38" stop-color="#0A1E10" />
+      <stop offset="0.72" stop-color="#213B14" />
+      <stop offset="1" stop-color="#4D6E1F" />
+    </linearGradient>
+    <radialGradient id="glowA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(930 220) rotate(124.9) scale(520 340)">
+      <stop stop-color="#A1B66A" stop-opacity="0.88" />
+      <stop offset="0.48" stop-color="#5F7E28" stop-opacity="0.34" />
+      <stop offset="1" stop-color="#11210A" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glowB" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1170 660) rotate(160.8) scale(700 260)">
+      <stop stop-color="#BACB75" stop-opacity="0.66" />
+      <stop offset="0.52" stop-color="#6A852A" stop-opacity="0.26" />
+      <stop offset="1" stop-color="#13210C" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glowC" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(470 510) rotate(12.4) scale(410 300)">
+      <stop stop-color="#244315" stop-opacity="0.88" />
+      <stop offset="0.5" stop-color="#102510" stop-opacity="0.3" />
+      <stop offset="1" stop-color="#08140E" stop-opacity="0" />
+    </radialGradient>
+    <filter id="softBlur" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="10" />
+    </filter>
+    <filter id="texture" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.0026 0.015" numOctaves="2" seed="8" />
+      <feColorMatrix
+        type="matrix"
+        values="1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 0.18 0"
+      />
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" fill="url(#bg)" />
+  <rect width="1600" height="900" fill="url(#glowA)" />
+  <rect width="1600" height="900" fill="url(#glowB)" />
+  <rect width="1600" height="900" fill="url(#glowC)" />
+
+  <g filter="url(#softBlur)" opacity="0.92" stroke-linecap="round">
+    <path d="M220 760C340 648 458 580 618 582C742 584 850 632 994 626C1110 622 1212 562 1404 642" stroke="#B5C570" stroke-width="66" />
+    <path d="M1008 134C1148 146 1240 242 1312 386C1374 512 1410 626 1570 742" stroke="#A7B65F" stroke-width="86" />
+    <path d="M560 82C668 178 720 316 684 448C648 582 504 678 414 812" stroke="#193515" stroke-width="110" />
+    <path d="M846 232C980 292 1096 412 1118 522C1140 634 1086 716 978 814" stroke="#D7DEAB" stroke-opacity="0.45" stroke-width="38" />
+    <path d="M130 260C298 290 420 396 518 532C594 640 664 722 820 814" stroke="#0A1E12" stroke-width="106" />
+    <path d="M1120 760C1244 734 1372 718 1502 742" stroke="#CED79C" stroke-opacity="0.48" stroke-width="58" />
+  </g>
+
+  <g opacity="0.32" filter="url(#texture)">
+    <rect width="1600" height="900" fill="#fff" />
+  </g>
+</svg>
