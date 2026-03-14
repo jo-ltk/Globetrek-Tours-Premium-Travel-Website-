@@ -58,8 +58,8 @@ export default function Footer({
   const content = footerContent[locale];
 
   return (
-    <footer className="px-5 pb-5 sm:px-8 lg:px-12 lg:pb-8">
-      <div className="overflow-hidden border-[5px] border-[#f0efea] bg-[#03111b]">
+    <footer className="w-full">
+      <div className="overflow-hidden bg-[#03111b]">
         <div className="grid lg:grid-cols-[372px_minmax(0,1fr)]">
           <div className="flex min-h-[30rem] flex-col justify-between border-b border-[#e7e4dd] bg-[#04111c] px-7 py-8 text-white sm:px-10 sm:py-9 lg:border-b-0 lg:border-r">
             <div>

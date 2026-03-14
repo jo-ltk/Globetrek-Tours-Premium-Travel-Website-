@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Check, ArrowRight, CarFront, Map, Sparkles } from "lucide-react";
 import ContactPanel from "@/components/ContactPanel";
 import ComfortSection from "@/components/ComfortSection";
@@ -8,6 +9,7 @@ import PageShell from "@/components/PageShell";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import TourSection from "@/components/TourSection";
 import { Reveal } from "@/components/animated";
+import StorytellingGallery from "@/components/StorytellingGallery";
 import { tours } from "@/lib/site-data";
 
 const highlights = [
@@ -79,10 +81,11 @@ export default function EnglishHomePage() {
             We
           </div>
           <div className="relative flex h-32 md:h-40 xl:h-48 items-center justify-center overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-[var(--line)]">
-            <img
+            <Image
               src="https://images.pexels.com/photos/843144/pexels-photo-843144.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt="Iceberg protecting nature"
-              className="absolute inset-0 h-full w-full object-cover brightness-90"
+              fill
+              className="object-cover brightness-90"
             />
             <span className="relative z-10 text-2xl md:text-3xl lg:text-4xl font-medium text-white tracking-tight">Protect</span>
           </div>
@@ -90,18 +93,21 @@ export default function EnglishHomePage() {
             <ArrowRight className="h-10 w-10 md:h-12 md:w-12 stroke-[1.5]" />
           </div>
           <div className="relative flex h-32 md:h-40 xl:h-48 items-center justify-center overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-[var(--line)]">
-            <img
+            <Image
               src="https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=800"
               alt="Nature canyon landscape"
-              className="absolute inset-0 h-full w-full object-cover brightness-90"
+              fill
+              className="object-cover brightness-90"
             />
             <span className="relative z-10 text-2xl md:text-3xl lg:text-4xl font-medium text-white tracking-tight">Nature</span>
           </div>
         </div>
       </Reveal>
 
+      <StorytellingGallery />
+
       <section className="py-12">
-        <div className="overflow-hidden border-[5px] border-[#f0efea]">
+        <div className="overflow-hidden bg-[#03111b]">
           <div className="grid lg:grid-cols-[0.8fr_1.2fr]">
             <Reveal className="flex h-full flex-col justify-between gap-10 bg-[#03111b] px-6 py-8 text-white sm:px-8 sm:py-10 lg:px-10">
               <div className="flex items-start gap-4">

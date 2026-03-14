@@ -52,7 +52,7 @@ function PremiumHero({
 
   return (
     <section className="relative w-full h-[95vh] min-h-[750px] p-4 bg-[#E7DED2]">
-       {/* The "Border" is actually the background of the outer section, and we use padding + rounded corners on the inner content */}
+       {/* Restored padding and borders for the hero section as requested */}
        <div className="relative w-full h-full overflow-hidden rounded-[2.5rem] border-[4px] border-white/10 group">
           {/* ── Background media ── */}
           {videoSrc ? (
@@ -366,10 +366,11 @@ function FullscreenHero({
             <div className="relative group cursor-pointer">
               <div className="w-12 h-12 rounded-full border-2 border-black/10 p-1 transition-transform duration-500 group-hover:scale-110">
                 <div className="w-full h-full rounded-full overflow-hidden relative">
-                   <img 
+                   <Image 
                       src={image} 
                       alt="Thumbnail" 
-                      className="w-full h-full object-cover brightness-50"
+                      fill
+                      className="object-cover brightness-50"
                    />
                    <div className="absolute inset-0 flex items-center justify-center">
                       <div className="w-0 h-0 border-t-[5px] border-t-transparent border-l-[8px] border-l-white border-b-[5px] border-b-transparent ml-1" />
