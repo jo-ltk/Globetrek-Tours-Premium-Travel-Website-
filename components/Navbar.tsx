@@ -25,32 +25,54 @@ const navMap = {
 
 export default function Navbar({
   locale = "en",
+  fullscreenHero = false,
 }: {
   locale?: "en" | "de";
+  fullscreenHero?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const items = navMap[locale];
   const cta = locale === "de" ? "Tour buchen" : "Book a Tour";
 
   return (
-    <header className="px-5 py-5 sm:px-8 lg:px-12">
+    <header
+      className={cn(
+        "px-5 py-5 sm:px-8 lg:px-12 transition-colors duration-300",
+        fullscreenHero
+          ? "text-white"
+          : ""
+      )}
+    >
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <Link
             href={locale === "de" ? "/de" : "/en"}
-            className="flex h-9 w-9 items-center justify-center rounded-full border border-[var(--line)] bg-white/55 text-lg font-semibold shadow-sm"
+            className={cn(
+              "flex h-9 w-9 items-center justify-center rounded-full text-lg font-semibold shadow-sm transition-colors duration-200",
+              fullscreenHero
+                ? "border border-white/25 bg-white/10 text-white backdrop-blur-sm hover:bg-white/20"
+                : "border border-[var(--line)] bg-white/55"
+            )}
           >
             /
           </Link>
           <LanguageSwitcher locale={locale} />
         </div>
 
-        <nav className="hidden items-center gap-10 text-xs text-[var(--muted)] lg:flex">
+        <nav
+          className={cn(
+            "hidden items-center gap-10 text-xs lg:flex",
+            fullscreenHero ? "text-white/75" : "text-[var(--muted)]"
+          )}
+        >
           {items.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="transition-colors duration-200 hover:text-[var(--ink)]"
+              className={cn(
+                "transition-colors duration-200",
+                fullscreenHero ? "hover:text-white" : "hover:text-[var(--ink)]"
+              )}
             >
               {item.label}
             </Link>
@@ -60,7 +82,12 @@ export default function Navbar({
         <div className="hidden lg:block">
           <Link
             href={locale === "de" ? "/de/packages" : "/en/packages"}
-            className="rounded-lg bg-[var(--accent)] px-5 py-3 text-xs font-medium text-white transition-transform duration-200 hover:-translate-y-0.5"
+            className={cn(
+              "rounded-lg px-5 py-3 text-xs font-medium transition-all duration-200 hover:-translate-y-0.5",
+              fullscreenHero
+                ? "border border-white/25 bg-white/10 text-white backdrop-blur-sm hover:bg-white hover:text-[#203523]"
+                : "bg-[var(--accent)] text-white"
+            )}
           >
             {cta}
           </Link>

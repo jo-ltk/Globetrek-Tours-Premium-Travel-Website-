@@ -41,12 +41,13 @@ const services = [
 
 export default function EnglishHomePage() {
   return (
-    <PageShell chatbot locale="en">
+    <PageShell chatbot locale="en" hideNavbar>
       <HeroSection
-        title="Veda Aura"
-        sideNote="The most trusted premium travel agency for private tours, transfers, and seamless discovery across Greece."
-        image="https://images.pexels.com/photos/29459095/pexels-photo-29459095.jpeg?auto=compress&cs=tinysrgb&w=1600"
-        imageAlt="Rock formations and lush cliffs in Greece"
+        premium
+        title="Live the dream you've only seen on screen"
+        description="Created for people who dream of Paris- and want to live it, not just visit"
+        image="https://images.pexels.com/photos/2082103/pexels-photo-2082103.jpeg?auto=compress&cs=tinysrgb&w=1920"
+        imageAlt="Beautiful view of Paris with the Eiffel Tower"
         ctaHref="/en/packages"
         ctaLabel="Explore destinations"
       />

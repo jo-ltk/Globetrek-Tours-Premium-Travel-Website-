@@ -35,7 +35,7 @@ export default function TestimonialsSection() {
             </h2>
 
             <div className="mx-auto mt-10 max-w-4xl">
-              <p className="text-[2rem] font-medium leading-[1.24] tracking-[-0.06em] text-[#31414d] sm:text-[2.55rem] lg:text-[3.4rem]">
+              <p className="line-clamp-4 text-[2rem] font-medium leading-[1.24] tracking-[-0.06em] text-[#31414d] sm:text-[2.55rem] lg:text-[3.4rem]">
                 <span className="text-[#445662]/70">&ldquo;</span>
                 {activeTestimonial.quote}
                 <span className="text-[#445662]/70">&rdquo;</span>

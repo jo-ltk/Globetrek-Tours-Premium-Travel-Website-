@@ -1,27 +1,36 @@
 import Link from "next/link";
-import { ChevronDown, Globe } from "lucide-react";
+import { cn } from "@/utils/helpers";
 
 export default function LanguageSwitcher({
   locale = "en",
 }: {
   locale?: "en" | "de";
 }) {
-  const label = locale === "de" ? "Deutsch" : "English";
-
   return (
-    <div className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] bg-white/65 px-3 py-2 text-xs text-[var(--ink)] shadow-sm backdrop-blur">
-      <Globe className="h-3.5 w-3.5 text-[var(--muted)]" />
-      <div className="flex items-center gap-2">
-        <Link href="/en" className={locale === "en" ? "font-medium" : "text-[var(--muted)]"}>
-          English
-        </Link>
-        <span className="text-[var(--line)]">/</span>
-        <Link href="/de" className={locale === "de" ? "font-medium" : "text-[var(--muted)]"}>
-          Deutsch
-        </Link>
-      </div>
-      <ChevronDown className="h-3.5 w-3.5 text-[var(--muted)]" />
-      <span className="sr-only">{label}</span>
+    <div className="flex items-center gap-2 bg-white/80 backdrop-blur-md p-1 rounded-full border border-black/5 shadow-sm">
+      <Link
+        href="/en"
+        className={cn(
+          "flex h-9 w-9 items-center justify-center rounded-full text-[10px] font-bold tracking-widest transition-all duration-300",
+          locale === "en" 
+            ? "bg-black text-white shadow-lg scale-105" 
+            : "text-black/40 hover:text-black hover:bg-black/5"
+        )}
+      >
+        EN
+      </Link>
+      <Link
+        href="/de"
+        className={cn(
+          "flex h-9 w-9 items-center justify-center rounded-full text-[10px] font-bold tracking-widest transition-all duration-300",
+          locale === "de" 
+            ? "bg-black text-white shadow-lg scale-105" 
+            : "text-black/40 hover:text-black hover:bg-black/5"
+        )}
+      >
+        DE
+      </Link>
     </div>
   );
 }
+
