@@ -1,9 +1,8 @@
-import Image from "next/image";
-import { ArrowRight } from "lucide-react";
 import ContactPanel from "@/components/ContactPanel";
 import ComfortSection from "@/components/ComfortSection";
 import GallerySection from "@/components/GallerySection";
 import HeroSection from "@/components/HeroSection";
+import HoverCardStrip from "@/components/HoverCardStrip";
 import PageShell from "@/components/PageShell";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import { Reveal } from "@/components/animated";
@@ -45,31 +44,8 @@ export default function EnglishHomePage() {
       </Reveal>
 
       <Reveal className="px-6 py-12 sm:px-10 w-full">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-[1400px] mx-auto">
-          <div className="flex h-32 md:h-40 xl:h-48 items-center justify-center rounded-[2rem] md:rounded-[3rem] bg-[var(--surface-strong)] text-[var(--ink)] text-2xl md:text-3xl lg:text-4xl font-medium tracking-tight">
-            We
-          </div>
-          <div className="relative flex h-32 md:h-40 xl:h-48 items-center justify-center overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-[var(--line)]">
-            <Image
-              src="https://images.pexels.com/photos/843144/pexels-photo-843144.jpeg?auto=compress&cs=tinysrgb&w=800"
-              alt="Iceberg protecting nature"
-              fill
-              className="object-cover brightness-90"
-            />
-            <span className="relative z-10 text-2xl md:text-3xl lg:text-4xl font-medium text-white tracking-tight">Protect</span>
-          </div>
-          <div className="flex h-32 md:h-40 xl:h-48 items-center justify-center rounded-[2rem] md:rounded-[3rem] bg-[#eaff66] text-black">
-            <ArrowRight className="h-10 w-10 md:h-12 md:w-12 stroke-[1.5]" />
-          </div>
-          <div className="relative flex h-32 md:h-40 xl:h-48 items-center justify-center overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-[var(--line)]">
-            <Image
-              src="https://images.pexels.com/photos/3408744/pexels-photo-3408744.jpeg?auto=compress&cs=tinysrgb&w=800"
-              alt="Nature canyon landscape"
-              fill
-              className="object-cover brightness-90"
-            />
-            <span className="relative z-10 text-2xl md:text-3xl lg:text-4xl font-medium text-white tracking-tight">Nature</span>
-          </div>
+        <div className="mx-auto max-w-[1400px]">
+          <HoverCardStrip />
         </div>
       </Reveal>
 

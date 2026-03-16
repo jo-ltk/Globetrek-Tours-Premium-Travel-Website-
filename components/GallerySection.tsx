@@ -79,52 +79,99 @@ export default function GallerySection() {
 
               return (
                 <StaggerItem key={card.title}>
-                  <motion.article 
+                  <motion.article
+                    initial="rest"
                     whileHover="hover"
-                    initial="initial"
-                    className="relative flex h-full flex-col justify-between p-8 sm:p-10 lg:p-12 bg-white rounded-[2.5rem] border border-[var(--line)] transition-colors duration-500 hover:bg-[#faf9f6]"
+                    animate="rest"
+                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                    className="group relative flex h-full min-h-[19rem] flex-col justify-between overflow-hidden rounded-[2.5rem] border border-[var(--line)] bg-white p-8 sm:p-10 lg:p-12"
+                    variants={{
+                      rest: {
+                        y: 0,
+                        backgroundColor: "#ffffff",
+                        borderColor: "rgba(32, 53, 35, 0.12)",
+                        boxShadow: "0 0 0 rgba(3, 17, 27, 0)",
+                      },
+                      hover: {
+                        y: -8,
+                        backgroundColor: "#fcfbf7",
+                        borderColor: "rgba(32, 53, 35, 0.2)",
+                        boxShadow: "0 24px 60px rgba(3, 17, 27, 0.08)",
+                      },
+                    }}
                   >
-                    <motion.div 
+                    <motion.div
                       variants={{
-                        initial: { opacity: 0, scale: 0.8 },
-                        hover: { opacity: 1, scale: 1 }
+                        rest: { opacity: 0.18, scale: 0.72 },
+                        hover: { opacity: 0.8, scale: 1.02 },
                       }}
-                      className="absolute top-10 right-10 w-24 h-24 bg-[var(--surface-strong)] rounded-full blur-3xl -z-0 pointer-events-none"
+                      className="pointer-events-none absolute right-10 top-10 -z-0 h-24 w-24 rounded-full bg-[var(--surface-strong)] blur-3xl"
+                    />
+                    <motion.div
+                      variants={{
+                        rest: { scaleX: 0, opacity: 0 },
+                        hover: { scaleX: 1, opacity: 1 },
+                      }}
+                      className="absolute bottom-0 left-0 h-1 w-full origin-left bg-[var(--ink)]/80"
                     />
 
                     <div className="relative z-10 flex items-start justify-between">
-                      <motion.div 
+                      <motion.div
                         variants={{
-                          initial: { backgroundColor: "var(--surface-strong)", color: "var(--ink)" },
-                          hover: { backgroundColor: "var(--ink)", color: "#fff" }
+                          rest: {
+                            backgroundColor: "var(--surface-strong)",
+                            color: "var(--ink)",
+                            rotate: 0,
+                            x: 0,
+                          },
+                          hover: {
+                            backgroundColor: "var(--ink)",
+                            color: "#fff",
+                            rotate: -6,
+                            x: 4,
+                          },
                         }}
-                        className="flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-500"
+                        className="flex h-12 w-12 items-center justify-center rounded-xl"
                       >
                         <Icon className="h-5 w-5" />
                       </motion.div>
-                      <span className="font-serif text-2xl italic text-[var(--ink)]/10">
+                      <motion.span
+                        variants={{
+                          rest: { opacity: 0.18, x: 0 },
+                          hover: { opacity: 0.32, x: -4 },
+                        }}
+                        className="font-serif text-2xl italic"
+                      >
                         0{index + 1}
-                      </span>
+                      </motion.span>
                     </div>
 
-                    <div className="relative z-10 mt-12">
-                      <h3 className="text-[1.4rem] font-semibold tracking-tight text-[var(--ink)] mb-3">
+                    <motion.div
+                      variants={{
+                        rest: { y: 0 },
+                        hover: { y: -4 },
+                      }}
+                      className="relative z-10 mt-12"
+                    >
+                      <motion.h3
+                        className="mb-3 text-[1.4rem] font-semibold text-[var(--ink)]"
+                      >
                         {card.title}
-                      </h3>
+                      </motion.h3>
                       <p className="text-[0.95rem] leading-relaxed text-[var(--muted)]">
                         {card.body}
                       </p>
                       
-                      <motion.div 
+                      <motion.div
                         variants={{
-                          initial: { x: -10, opacity: 0 },
-                          hover: { x: 0, opacity: 1 }
+                          rest: { opacity: 0, x: -10 },
+                          hover: { opacity: 1, x: 0 },
                         }}
-                        className="mt-6 flex items-center gap-2 text-[var(--ink)] font-medium text-xs uppercase tracking-wider"
+                        className="mt-6 flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-[var(--ink)]"
                       >
                         Explore <ArrowRight className="h-3.5 w-3.5" />
                       </motion.div>
-                    </div>
+                    </motion.div>
                   </motion.article>
                 </StaggerItem>
               );
@@ -136,4 +183,3 @@ export default function GallerySection() {
   </section>
 );
 }
-
