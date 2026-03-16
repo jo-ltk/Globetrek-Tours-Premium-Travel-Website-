@@ -1,35 +1,39 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ArrowRight, ArrowUpRight, Mail, PenSquare, Phone } from "lucide-react";
 import { Reveal, Stagger, StaggerItem } from "@/components/animated";
 import { motion } from "framer-motion";
-
-const contactCards = [
-  {
-    icon: Mail,
-    title: "Write us",
-    body: "Reach out by email for planning, pricing, and availability.",
-    foot: "info@veda-aura.com",
-    href: "mailto:info@veda-aura.com",
-  },
-  {
-    icon: PenSquare,
-    title: "Fill out form",
-    body: "Send your trip details online and we will get back to you.",
-    foot: "Leave request",
-    href: "/en/contact",
-  },
-  {
-    icon: Phone,
-    title: "Call us",
-    body: "Speak with us directly for quick questions and assistance.",
-    foot: "+30 694 455 3616",
-    href: "tel:+306944553616",
-  },
-];
+import { getLocaleFromPathname } from "@/utils/locale";
 
 export default function ContactPanel() {
+  const pathname = usePathname();
+  const locale = getLocaleFromPathname(pathname);
+  const contactCards = [
+    {
+      icon: Mail,
+      title: "Write us",
+      body: "Reach out by email for planning, pricing, and availability.",
+      foot: "info@veda-aura.com",
+      href: "mailto:info@veda-aura.com",
+    },
+    {
+      icon: PenSquare,
+      title: "Fill out form",
+      body: "Send your trip details online and we will get back to you.",
+      foot: "Leave request",
+      href: locale === "de" ? "/de/contact" : "/en/contact",
+    },
+    {
+      icon: Phone,
+      title: "Call us",
+      body: "Speak with us directly for quick questions and assistance.",
+      foot: "+30 694 455 3616",
+      href: "tel:+306944553616",
+    },
+  ];
+
   return (
     <section className="py-16">
       <Reveal className="bg-transparent">
@@ -87,17 +91,39 @@ export default function ContactPanel() {
                 return (
                   <StaggerItem key={card.title} className="flex flex-1">
                     <motion.div
+                      initial="rest"
                       whileHover="hover"
-                      initial="initial"
-                      className="relative flex flex-1 overflow-hidden rounded-[2rem] border border-[var(--line)] bg-white transition-colors duration-500 hover:bg-[#faf9f6]"
+                      animate="rest"
+                      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                      className="group relative flex flex-1 overflow-hidden rounded-[2rem] border border-[var(--line)] bg-white"
+                      variants={{
+                        rest: {
+                          y: 0,
+                          backgroundColor: "#ffffff",
+                          borderColor: "rgba(32, 53, 35, 0.12)",
+                          boxShadow: "0 0 0 rgba(3, 17, 27, 0)",
+                        },
+                        hover: {
+                          y: -8,
+                          backgroundColor: "#fcfbf7",
+                          borderColor: "rgba(32, 53, 35, 0.2)",
+                          boxShadow: "0 24px 60px rgba(3, 17, 27, 0.08)",
+                        },
+                      }}
                     >
-                      {/* Glow on hover */}
                       <motion.div
                         variants={{
-                          initial: { opacity: 0, scale: 0.8 },
-                          hover: { opacity: 1, scale: 1 },
+                          rest: { opacity: 0.18, scale: 0.72 },
+                          hover: { opacity: 0.8, scale: 1.02 },
                         }}
-                        className="absolute top-6 right-6 w-32 h-32 bg-[var(--surface-strong)] rounded-full blur-3xl pointer-events-none"
+                        className="pointer-events-none absolute right-6 top-6 h-32 w-32 rounded-full bg-[var(--surface-strong)] blur-3xl"
+                      />
+                      <motion.div
+                        variants={{
+                          rest: { scaleX: 0, opacity: 0 },
+                          hover: { scaleX: 1, opacity: 1 },
+                        }}
+                        className="absolute bottom-0 left-0 h-1 w-full origin-left bg-[var(--ink)]/80"
                       />
 
                       <Link
@@ -108,41 +134,68 @@ export default function ContactPanel() {
                           {/* Icon pill */}
                           <motion.div
                             variants={{
-                              initial: { backgroundColor: "var(--surface-strong)", color: "var(--ink)" },
-                              hover: { backgroundColor: "var(--ink)", color: "#fff" },
+                              rest: {
+                                backgroundColor: "var(--surface-strong)",
+                                color: "var(--ink)",
+                                rotate: 0,
+                                x: 0,
+                              },
+                              hover: {
+                                backgroundColor: "var(--ink)",
+                                color: "#fff",
+                                rotate: -6,
+                                x: 4,
+                              },
                             }}
-                            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl transition-all duration-500"
+                            className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl"
                           >
                             <Icon className="h-5 w-5" />
                           </motion.div>
 
-                          <div>
-                            <p className="text-[0.65rem] uppercase tracking-[0.22em] font-bold text-[var(--muted)] mb-1">
+                          <motion.div
+                            variants={{
+                              rest: { y: 0 },
+                              hover: { y: -3 },
+                            }}
+                          >
+                            <motion.p
+                              variants={{
+                                rest: { opacity: 0.68, x: 0 },
+                                hover: { opacity: 1, x: 2 },
+                              }}
+                              className="mb-1 text-[0.65rem] font-bold uppercase tracking-[0.22em] text-[var(--muted)]"
+                            >
                               0{index + 1}
-                            </p>
+                            </motion.p>
                             <h3 className="text-xl font-semibold tracking-tight text-[var(--ink)]">
                               {card.title}
                             </h3>
                             <p className="mt-1 text-sm leading-relaxed text-[var(--muted)]">
                               {card.body}
                             </p>
-                          </div>
+                          </motion.div>
                         </div>
 
                         <div className="flex shrink-0 flex-col items-end gap-3 text-right">
                           <motion.span
                             variants={{
-                              initial: { x: 0 },
-                              hover: { x: 4 },
+                              rest: {
+                                x: 0,
+                                borderColor: "rgba(32, 53, 35, 0.12)",
+                              },
+                              hover: {
+                                x: 4,
+                                borderColor: "rgba(32, 53, 35, 0.22)",
+                              },
                             }}
-                            className="flex h-10 w-10 items-center justify-center rounded-full border border-[var(--line)] text-[var(--ink)] transition-all duration-300"
+                            className="flex h-10 w-10 items-center justify-center rounded-full border text-[var(--ink)]"
                           >
                             <ArrowUpRight className="h-4 w-4" />
                           </motion.span>
                           <motion.p
                             variants={{
-                              initial: { opacity: 0.6 },
-                              hover: { opacity: 1 },
+                              rest: { opacity: 0.7, x: 0 },
+                              hover: { opacity: 1, x: -2 },
                             }}
                             className="text-sm font-medium text-[var(--ink)]"
                           >

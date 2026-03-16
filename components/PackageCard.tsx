@@ -1,8 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Accessibility, Clock3 } from "lucide-react";
 import { HoverScale } from "@/components/animated";
 import type { TourPackage } from "@/types/package";
+import { getLocaleFromPathname } from "@/utils/locale";
 
 export default function PackageCard({
   locale = "en",
@@ -11,9 +15,11 @@ export default function PackageCard({
   locale?: "en" | "de";
   tour: TourPackage;
 }) {
-  const moreInfo = locale === "de" ? "Mehr Info" : "More Info";
-  const book = locale === "de" ? "Buchen" : "Book";
-  const accessibilityLabel = locale === "de" ? "Rollstuhlgerecht" : "Wheelchair Accessible";
+  const pathname = usePathname();
+  const currentLocale = getLocaleFromPathname(pathname) || locale;
+  const moreInfo = currentLocale === "de" ? "Mehr Info" : "More Info";
+  const book = currentLocale === "de" ? "Buchen" : "Book";
+  const accessibilityLabel = currentLocale === "de" ? "Rollstuhlgerecht" : "Wheelchair Accessible";
 
   return (
     <HoverScale className="h-full">
@@ -48,13 +54,13 @@ export default function PackageCard({
 
           <div className="mt-auto grid grid-cols-2 gap-3 pt-7">
             <Link
-              href={`/${locale}/packages/${tour.slug}`}
+              href={`/${currentLocale}/packages/${tour.slug}`}
               className="rounded-[1.1rem] bg-[#f4f1ec] px-4 py-4 text-center text-[1.02rem] font-medium text-[var(--ink)] transition-colors duration-200 hover:bg-white"
             >
               {moreInfo}
             </Link>
             <Link
-              href={`/${locale}/packages/${tour.slug}`}
+              href={`/${currentLocale}/packages/${tour.slug}`}
               className="rounded-[1.1rem] bg-[#284d22] px-4 py-4 text-center text-[1.02rem] font-medium text-white transition-transform duration-200 hover:-translate-y-0.5"
             >
               {book}

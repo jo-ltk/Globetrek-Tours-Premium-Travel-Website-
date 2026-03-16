@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
+import DocumentLanguage from "@/components/DocumentLanguage";
 import "./globals.css";
 
 const sans = Manrope({
@@ -26,7 +27,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${sans.variable} ${serif.variable}`}>{children}</body>
+      <body className={`${sans.variable} ${serif.variable}`}>
+        <DocumentLanguage />
+        {children}
+      </body>
     </html>
   );
 }

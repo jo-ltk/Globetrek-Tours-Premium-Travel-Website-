@@ -3,10 +3,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Grid } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/utils/helpers";
 import { AnimatePresence, motion } from "framer-motion";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
+import { getLocaleFromPathname } from "@/utils/locale";
 
 /* ── Custom Icons ── */
 const GridDots = ({ className }: { className?: string }) => (
@@ -45,6 +47,8 @@ function PremiumHero({
 }) {
   const [loaded, setLoaded] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const currentLocale = getLocaleFromPathname(pathname) || locale;
 
   useEffect(() => {
     setLoaded(true);
@@ -94,7 +98,7 @@ function PremiumHero({
                 <motion.span layout>/</motion.span>
               </motion.div>
               <div className="hidden sm:block">
-                <LanguageSwitcher locale={locale} />
+                <LanguageSwitcher locale={currentLocale} />
               </div>
             </div>
 
@@ -108,11 +112,11 @@ function PremiumHero({
             {/* Right: Primary Navigation (Redesigned as premium buttons) */}
             <div className="hidden lg:flex items-center gap-1.5 bg-white/80 backdrop-blur-md p-1.5 rounded-full border border-black/5 shadow-sm">
               {[
-                { label: locale === "de" ? "Start" : "Home", href: locale === "de" ? "/de" : "/en" },
-                { label: locale === "de" ? "Uber uns" : "About us", href: locale === "de" ? "/de/events" : "/en/events" },
-                { label: locale === "de" ? "Transfers" : "Transfers", href: locale === "de" ? "/de/experiences" : "/en/experiences" },
-                { label: locale === "de" ? "Touren" : "Tours", href: locale === "de" ? "/de/packages" : "/en/packages" },
-                { label: locale === "de" ? "Kontakt" : "Contacts", href: locale === "de" ? "/de/contact" : "/en/contact" },
+                { label: currentLocale === "de" ? "Start" : "Home", href: currentLocale === "de" ? "/de" : "/en" },
+                { label: currentLocale === "de" ? "Uber uns" : "About us", href: currentLocale === "de" ? "/de/events" : "/en/events" },
+                { label: currentLocale === "de" ? "Transfers" : "Transfers", href: currentLocale === "de" ? "/de/experiences" : "/en/experiences" },
+                { label: currentLocale === "de" ? "Touren" : "Tours", href: currentLocale === "de" ? "/de/packages" : "/en/packages" },
+                { label: currentLocale === "de" ? "Kontakt" : "Contacts", href: currentLocale === "de" ? "/de/contact" : "/en/contact" },
               ].map((item) => (
                 <Link
                   key={item.href}
@@ -160,11 +164,11 @@ function PremiumHero({
                       className="flex flex-col gap-4 mb-8"
                     >
                       {[
-                        { label: locale === "de" ? "Start" : "Home", href: locale === "de" ? "/de" : "/en" },
-                        { label: locale === "de" ? "Uber uns" : "About us", href: locale === "de" ? "/de/events" : "/en/events" },
-                        { label: locale === "de" ? "Transfers" : "Transfers", href: locale === "de" ? "/de/experiences" : "/en/experiences" },
-                        { label: locale === "de" ? "Touren" : "Tours", href: locale === "de" ? "/de/packages" : "/en/packages" },
-                        { label: locale === "de" ? "Kontakt" : "Contacts", href: locale === "de" ? "/de/contact" : "/en/contact" },
+                        { label: currentLocale === "de" ? "Start" : "Home", href: currentLocale === "de" ? "/de" : "/en" },
+                        { label: currentLocale === "de" ? "Uber uns" : "About us", href: currentLocale === "de" ? "/de/events" : "/en/events" },
+                        { label: currentLocale === "de" ? "Transfers" : "Transfers", href: currentLocale === "de" ? "/de/experiences" : "/en/experiences" },
+                        { label: currentLocale === "de" ? "Touren" : "Tours", href: currentLocale === "de" ? "/de/packages" : "/en/packages" },
+                        { label: currentLocale === "de" ? "Kontakt" : "Contacts", href: currentLocale === "de" ? "/de/contact" : "/en/contact" },
                       ].map((item) => (
                         <Link
                           key={item.href}

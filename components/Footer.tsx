@@ -1,5 +1,9 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ArrowRight } from "lucide-react";
+import { getLocaleFromPathname } from "@/utils/locale";
 
 const footerContent = {
   en: {
@@ -55,7 +59,9 @@ export default function Footer({
 }: {
   locale?: "en" | "de";
 }) {
-  const content = footerContent[locale];
+  const pathname = usePathname();
+  const currentLocale = getLocaleFromPathname(pathname) || locale;
+  const content = footerContent[currentLocale];
 
   return (
     <footer className="w-full">
@@ -64,7 +70,7 @@ export default function Footer({
           <div className="flex min-h-[30rem] flex-col justify-between border-b border-[#e7e4dd] bg-[#04111c] px-7 py-8 text-white sm:px-10 sm:py-9 lg:border-b-0 lg:border-r">
             <div>
               <Link
-                href={locale === "de" ? "/de" : "/en"}
+                href={currentLocale === "de" ? "/de" : "/en"}
                 className="inline-flex items-center gap-3 text-[1.95rem] font-semibold tracking-[-0.05em]"
               >
                 <span className="relative flex h-7 w-7 items-center justify-center">
@@ -115,7 +121,7 @@ export default function Footer({
 
             <div className="relative z-10 mt-10">
               <Link
-                href={locale === "de" ? "/de/contact" : "/en/contact"}
+                href={currentLocale === "de" ? "/de/contact" : "/en/contact"}
                 className="flex items-center justify-between gap-4 rounded-[0.35rem] bg-[#f4f2ed] px-6 py-4 text-[#171717] transition-transform duration-200 hover:-translate-y-0.5 sm:px-7 sm:py-5"
               >
                 <span className="text-[1.05rem] font-medium sm:text-[1.15rem]">{content.cta}</span>

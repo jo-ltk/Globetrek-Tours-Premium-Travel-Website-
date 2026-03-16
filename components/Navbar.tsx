@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { cn } from "@/utils/helpers";
+import { getLocaleFromPathname } from "@/utils/locale";
 
 const navMap = {
   en: [
@@ -31,8 +33,10 @@ export default function Navbar({
   fullscreenHero?: boolean;
 }) {
   const [open, setOpen] = useState(false);
-  const items = navMap[locale];
-  const cta = locale === "de" ? "Tour buchen" : "Book a Tour";
+  const pathname = usePathname();
+  const currentLocale = getLocaleFromPathname(pathname) || locale;
+  const items = navMap[currentLocale];
+  const cta = currentLocale === "de" ? "Tour buchen" : "Book a Tour";
 
   return (
     <header
@@ -46,7 +50,7 @@ export default function Navbar({
       <div className="flex items-center justify-between gap-4">
         <div className="flex items-center gap-3">
           <Link
-            href={locale === "de" ? "/de" : "/en"}
+            href={currentLocale === "de" ? "/de" : "/en"}
             className={cn(
               "flex h-9 w-9 items-center justify-center rounded-full text-lg font-semibold shadow-sm transition-colors duration-200",
               fullscreenHero
@@ -56,7 +60,7 @@ export default function Navbar({
           >
             /
           </Link>
-          <LanguageSwitcher locale={locale} />
+          <LanguageSwitcher locale={currentLocale} />
         </div>
 
         <nav
@@ -81,7 +85,7 @@ export default function Navbar({
 
         <div className="hidden lg:block">
           <Link
-            href={locale === "de" ? "/de/packages" : "/en/packages"}
+            href={currentLocale === "de" ? "/de/packages" : "/en/packages"}
             className={cn(
               "rounded-lg px-5 py-3 text-xs font-medium transition-all duration-200 hover:-translate-y-0.5",
               fullscreenHero
@@ -121,7 +125,7 @@ export default function Navbar({
             </Link>
           ))}
           <Link
-            href={locale === "de" ? "/de/packages" : "/en/packages"}
+            href={currentLocale === "de" ? "/de/packages" : "/en/packages"}
             className="block rounded-xl bg-[var(--accent)] px-3 py-3 text-center text-sm font-medium text-white"
             onClick={() => setOpen(false)}
           >
