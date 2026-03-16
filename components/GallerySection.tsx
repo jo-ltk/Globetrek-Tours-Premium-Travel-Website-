@@ -1,5 +1,8 @@
-import { Accessibility, BadgeCheck, CarFront, Wallet } from "lucide-react";
+"use client";
+
+import { Accessibility, BadgeCheck, CarFront, Wallet, ArrowRight } from "lucide-react";
 import { Reveal, Stagger, StaggerItem } from "@/components/animated";
+import { motion } from "framer-motion";
 
 const cards = [
   {
@@ -26,81 +29,111 @@ const cards = [
 
 export default function GallerySection() {
   return (
-    <section className="py-12">
-      <div className="overflow-hidden border-[5px] border-[#f0efea] bg-[#03111b]">
-        <div className="grid lg:grid-cols-[0.78fr_1.22fr]">
-          <Reveal className="flex h-full flex-col justify-between gap-10 px-6 py-8 text-white sm:px-8 sm:py-10 lg:border-r lg:border-white/10 lg:px-10">
-            <div className="flex items-start gap-4">
-              <span className="mt-5 h-px w-12 bg-white/45 sm:w-16" />
-              <div>
-                <p className="text-[0.69rem] uppercase tracking-[0.24em] text-white/58">
+    <section className="py-16">
+      <Reveal className="bg-transparent">
+        <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-12">
+          <div className="grid gap-4 lg:grid-cols-[0.85fr_1.15fr]">
+          {/* Left Content Side - Now with premium curvature */}
+          <div className="relative flex h-full flex-col justify-between bg-[#03111b] px-8 py-12 text-white sm:px-12 sm:py-16 lg:px-16 lg:py-20 rounded-[2.5rem] overflow-hidden">
+            {/* Subtle Gradient Overlay */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.05),transparent_60%)] pointer-events-none" />
+            
+            <div className="relative z-10">
+              <div className="flex items-center gap-4 mb-8">
+                <span className="h-px w-10 bg-white/30" />
+                <p className="text-[0.7rem] uppercase tracking-[0.25em] font-bold text-white/60">
                   Our advantages
                 </p>
-                <h2 className="mt-3 max-w-md text-4xl font-medium leading-[0.95] tracking-[-0.07em] text-white sm:text-5xl lg:text-[3.65rem]">
-                  The benefits of traveling with Veda Aura
-                </h2>
               </div>
-            </div>
-
-            <div className="space-y-8">
-              <p className="max-w-md text-sm leading-7 text-white/68">
+              <h2 className="font-serif text-5xl font-medium leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-[4.5rem]">
+                The benefits of traveling with <span className="italic text-white/90">Veda Aura</span>
+              </h2>
+              
+              <p className="mt-10 max-w-md text-lg leading-relaxed text-white/70 font-light">
                 We take care of the details so you can enjoy Greece at your own pace, with
                 services tailored to your travel rhythm and comfort level.
               </p>
-
-              <div className="grid max-w-md gap-3 sm:grid-cols-2">
-                <div className="rounded-[1.4rem] border border-white/12 bg-white/6 px-4 py-4">
-                  <p className="text-[0.68rem] uppercase tracking-[0.22em] text-white/45">
-                    Service style
-                  </p>
-                  <p className="mt-3 text-lg font-medium tracking-[-0.04em] text-white">
-                    Private, flexible, calm
-                  </p>
-                </div>
-
-                <div className="rounded-[1.4rem] border border-white/12 bg-white/6 px-4 py-4">
-                  <p className="text-[0.68rem] uppercase tracking-[0.22em] text-white/45">
-                    Designed for
-                  </p>
-                  <p className="mt-3 text-lg font-medium tracking-[-0.04em] text-white">
-                    Tours, transfers, day plans
-                  </p>
-                </div>
-              </div>
             </div>
-          </Reveal>
 
-          <Stagger className="grid gap-px bg-white/10 md:grid-cols-2">
+            <div className="relative z-10 mt-16 grid gap-4 sm:grid-cols-2">
+              {[
+                { label: "Service style", value: "Private & Flexible" },
+                { label: "Designed for", value: "Tours & Transfers" }
+              ].map((item) => (
+                <div key={item.label} className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm">
+                  <p className="text-[0.6rem] uppercase tracking-[0.2em] font-bold text-white/40 mb-2">
+                    {item.label}
+                  </p>
+                  <p className="text-lg font-medium tracking-tight text-white">
+                    {item.value}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Cards Side - Individual curved cards for a cleaner blend */}
+          <Stagger className="grid gap-4 sm:grid-cols-2">
             {cards.map((card, index) => {
               const Icon = card.icon;
 
               return (
                 <StaggerItem key={card.title}>
-                  <article className="flex h-full flex-col justify-between bg-[#f4f1e8] p-6 sm:p-7">
-                    <div className="flex items-start justify-between gap-4">
-                      <span className="text-xs uppercase tracking-[0.22em] text-[var(--muted)]">
+                  <motion.article 
+                    whileHover="hover"
+                    initial="initial"
+                    className="relative flex h-full flex-col justify-between p-8 sm:p-10 lg:p-12 bg-white rounded-[2.5rem] border border-[var(--line)] transition-colors duration-500 hover:bg-[#faf9f6]"
+                  >
+                    <motion.div 
+                      variants={{
+                        initial: { opacity: 0, scale: 0.8 },
+                        hover: { opacity: 1, scale: 1 }
+                      }}
+                      className="absolute top-10 right-10 w-24 h-24 bg-[var(--surface-strong)] rounded-full blur-3xl -z-0 pointer-events-none"
+                    />
+
+                    <div className="relative z-10 flex items-start justify-between">
+                      <motion.div 
+                        variants={{
+                          initial: { backgroundColor: "var(--surface-strong)", color: "var(--ink)" },
+                          hover: { backgroundColor: "var(--ink)", color: "#fff" }
+                        }}
+                        className="flex h-12 w-12 items-center justify-center rounded-xl transition-all duration-500"
+                      >
+                        <Icon className="h-5 w-5" />
+                      </motion.div>
+                      <span className="font-serif text-2xl italic text-[var(--ink)]/10">
                         0{index + 1}
                       </span>
-                      <div className="flex h-12 w-12 items-center justify-center rounded-[1rem] bg-[#03111b] text-white">
-                        <Icon className="h-5 w-5" />
-                      </div>
                     </div>
 
-                    <div className="mt-14 border-t border-[rgba(3,17,27,0.1)] pt-5">
-                      <h3 className="max-w-[14rem] text-[2rem] font-medium tracking-[-0.06em] text-[#13232d]">
+                    <div className="relative z-10 mt-12">
+                      <h3 className="text-[1.4rem] font-semibold tracking-tight text-[var(--ink)] mb-3">
                         {card.title}
                       </h3>
-                      <p className="mt-3 max-w-[18rem] text-[1rem] leading-7 text-[var(--muted)]">
+                      <p className="text-[0.95rem] leading-relaxed text-[var(--muted)]">
                         {card.body}
                       </p>
+                      
+                      <motion.div 
+                        variants={{
+                          initial: { x: -10, opacity: 0 },
+                          hover: { x: 0, opacity: 1 }
+                        }}
+                        className="mt-6 flex items-center gap-2 text-[var(--ink)] font-medium text-xs uppercase tracking-wider"
+                      >
+                        Explore <ArrowRight className="h-3.5 w-3.5" />
+                      </motion.div>
                     </div>
-                  </article>
+                  </motion.article>
                 </StaggerItem>
               );
             })}
           </Stagger>
         </div>
       </div>
-    </section>
-  );
+    </Reveal>
+  </section>
+);
 }
+

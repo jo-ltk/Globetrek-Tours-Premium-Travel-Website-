@@ -1,6 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { motion } from "framer-motion";
 import { Reveal, Stagger, StaggerItem } from "@/components/animated";
 
 const comfortCards = [
@@ -34,62 +37,104 @@ const comfortCards = [
   },
 ];
 
+// Spring config — feels natural, no overshoot
+const spring = { type: "spring" as const, stiffness: 220, damping: 30, mass: 0.8 };
+
+function ComfortCard({ card }: { card: (typeof comfortCards)[0] }) {
+  return (
+    <motion.article
+      initial="rest"
+      whileHover="hover"
+      animate="rest"
+      className="cursor-pointer"
+    >
+      {/* Image box — springs open on hover */}
+      <motion.div
+        variants={{ rest: { height: 260 }, hover: { height: 370 } }}
+        transition={spring}
+        className="relative overflow-hidden bg-[#d8d4cc]"
+        style={{ willChange: "height" }}
+      >
+        {/* Inner wrapper handles scale so the image fills the growing box */}
+        <motion.div
+          variants={{ rest: { scale: 1.04 }, hover: { scale: 1.1 } }}
+          transition={spring}
+          className="absolute inset-0"
+          style={{ willChange: "transform" }}
+        >
+          <Image
+            alt={card.alt}
+            className="object-cover grayscale-[18%] sepia-[10%]"
+            fill
+            sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 25vw"
+            src={card.image}
+          />
+        </motion.div>
+
+        {/* Ambient gradient always visible */}
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(246,242,232,0.05),rgba(246,242,232,0.18))]" />
+
+        {/* Vignette fades in on hover */}
+        <motion.div
+          variants={{ rest: { opacity: 0 }, hover: { opacity: 1 } }}
+          transition={{ duration: 0.35 }}
+          className="absolute inset-0 bg-black/15"
+        />
+      </motion.div>
+
+      {/* Text — naturally pushed down as image spring-grows */}
+      <div className="px-1 pb-1 pt-6">
+        <h3 className="text-[2rem] font-medium tracking-[-0.06em] text-[var(--ink)]">
+          {card.title}
+        </h3>
+        <p className="mt-3 max-w-[18rem] text-[1.02rem] leading-8 text-[var(--muted)]">
+          {card.body}
+        </p>
+      </div>
+    </motion.article>
+  );
+}
+
 export default function ComfortSection() {
   return (
-    <section className="space-y-10 py-12">
-      <Reveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-        <div className="flex items-start gap-4">
-          <span className="mt-5 h-px w-12 bg-[var(--ink)]/75 sm:w-16" />
-          <div>
-            <p className="section-kicker">About us</p>
-            <h2 className="mt-3 max-w-3xl text-4xl font-medium tracking-[-0.07em] sm:text-5xl lg:text-[3.7rem]">
-              The highest level of comfort, convenience, and service
-            </h2>
-          </div>
-        </div>
-
-        <div className="max-w-md">
-          <p className="text-sm leading-7 text-[var(--muted)]">
-            At Veda Aura, we build each journey around thoughtful pacing, polished logistics, and
-            a private-service standard that keeps the whole day feeling effortless.
-          </p>
-          <Link
-            href="/en/events"
-            className="mt-5 inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em]"
-          >
-            More about us
-            <ArrowUpRight className="h-3.5 w-3.5" />
-          </Link>
-        </div>
-      </Reveal>
-
-      <Stagger className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        {comfortCards.map((card) => (
-          <StaggerItem key={card.title}>
-            <article className="h-full">
-              <div className="relative aspect-[0.92] overflow-hidden bg-[#d8d4cc]">
-                <Image
-                  alt={card.alt}
-                  className="object-cover grayscale-[18%] sepia-[10%]"
-                  fill
-                  sizes="(max-width: 767px) 100vw, (max-width: 1279px) 50vw, 25vw"
-                  src={card.image}
-                />
-                <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(246,242,232,0.05),rgba(246,242,232,0.18))]" />
+    <section className="py-12">
+      <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-12">
+        <div className="space-y-10">
+          <Reveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="flex items-start gap-4">
+              <span className="mt-5 h-px w-12 bg-[var(--ink)]/75 sm:w-16" />
+              <div>
+                <p className="section-kicker">About us</p>
+                <h2 className="mt-3 max-w-3xl text-4xl font-medium tracking-[-0.07em] sm:text-5xl lg:text-[3.7rem]">
+                  The highest level of comfort, convenience, and service
+                </h2>
               </div>
+            </div>
 
-              <div className="px-1 pb-1 pt-6">
-                <h3 className="text-[2rem] font-medium tracking-[-0.06em] text-[var(--ink)]">
-                  {card.title}
-                </h3>
-                <p className="mt-3 max-w-[18rem] text-[1.02rem] leading-8 text-[var(--muted)]">
-                  {card.body}
-                </p>
-              </div>
-            </article>
-          </StaggerItem>
-        ))}
-      </Stagger>
+            <div className="max-w-md">
+              <p className="text-sm leading-7 text-[var(--muted)]">
+                At Veda Aura, we build each journey around thoughtful pacing, polished logistics, and
+                a private-service standard that keeps the whole day feeling effortless.
+              </p>
+              <Link
+                href="/en/events"
+                className="mt-5 inline-flex items-center gap-2 text-xs uppercase tracking-[0.22em]"
+              >
+                More about us
+                <ArrowUpRight className="h-3.5 w-3.5" />
+              </Link>
+            </div>
+          </Reveal>
+
+          <Stagger className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {comfortCards.map((card) => (
+              <StaggerItem key={card.title}>
+                <ComfortCard card={card} />
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </div>
+      </div>
     </section>
   );
 }
